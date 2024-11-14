@@ -35,12 +35,15 @@ class QuickTest extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
-                  const SizedBox(width: 40),
+                  const SizedBox(width: 20),
                   Expanded(
-                    child: Container(
-                      height: 120,
-                      width: 120,
-                      child: Image.asset('assets/icons/qualification.png'),
+                    child: SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: Image.asset(
+                        'assets/icons/qualification.png',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ],

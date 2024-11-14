@@ -50,7 +50,7 @@ class TestTile extends StatelessWidget {
                 Shadow(
                   color: Colors.black.withOpacity(0.4),
                   blurRadius: 10,
-                  offset: Offset(4, 4),
+                  offset: const Offset(4, 4),
                 )
               ],
             ),
