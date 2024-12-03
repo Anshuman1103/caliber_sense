@@ -15,12 +15,10 @@ class ResultScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text(
-          'Comming Soon',
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+        child: Image.asset(
+          'assets/icons/coming-soon.png',
+          height: 200,
+          width: 200,
         ),
       ),
     );
