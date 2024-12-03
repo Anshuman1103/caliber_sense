@@ -1,11 +1,20 @@
+import 'package:caliber_sense/screens/question_screen.dart';
 import 'package:flutter/material.dart';
 
 class QuickTest extends StatelessWidget {
   const QuickTest({super.key});
+
   @override
   Widget build(BuildContext context) {
+    void questionScreen() {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => const QuestionScreen()));
+    }
+
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        questionScreen();
+      },
       child: Container(
         width: double.infinity,
         height: 180,
