@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Option extends StatefulWidget {
-  const Option({super.key});
+  const Option({super.key, required this.optionText});
+
+  final String optionText;
 
   @override
   State<Option> createState() {
@@ -12,7 +14,9 @@ class Option extends StatefulWidget {
 class _Option extends State<Option> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () {},
+      child: Container(
         width: 320,
         height: 80,
         //alignment: Alignment.center,
@@ -20,12 +24,14 @@ class _Option extends State<Option> {
           borderRadius: BorderRadius.circular(20),
           color: Theme.of(context).colorScheme.secondary,
         ),
-        child: ListTile(
-          title: Text('Option 1',
+        child: Center(
+          child: Text(widget.optionText,
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
                   .copyWith(color: Theme.of(context).colorScheme.primary)),
-        ));
+        ),
+      ),
+    );
   }
 }

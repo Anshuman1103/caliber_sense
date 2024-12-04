@@ -24,8 +24,14 @@ class QuestionScreen extends StatelessWidget {
                       .textTheme
                       .titleLarge!
                       .copyWith(color: Theme.of(context).colorScheme.primary)),
+              const SizedBox(height: 50),
+              const Option(optionText: 'Option 1'),
               const SizedBox(height: 20),
-              const Option(),
+              const Option(optionText: 'Option 2'),
+              const SizedBox(height: 20),
+              const Option(optionText: 'Option 3'),
+              const SizedBox(height: 20),
+              const Option(optionText: 'Option 4'),
             ],
           ),
         ),
