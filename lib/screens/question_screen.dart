@@ -19,7 +19,7 @@ class QuestionScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('First question will display here',
+              Text('Q1. First question will display here',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!

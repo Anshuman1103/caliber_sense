@@ -7,29 +7,51 @@ class Option extends StatefulWidget {
 
   @override
   State<Option> createState() {
-    return _Option();
+    return _OptionState();
   }
 }
 
-class _Option extends State<Option> {
+class _OptionState extends State<Option> {
+  bool _isSelected = false; // Tracks if the option is selected
+
+  void _handleTap(BuildContext context) {
+    setState(() {
+      _isSelected = !_isSelected; // Toggle selection
+    });
+
+    // Show a SnackBar with the selected option
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(_isSelected
+            ? '${widget.optionText} selected'
+            : '${widget.optionText} deselected'),
+        duration: const Duration(seconds: 1),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => _handleTap(context),
       child: Container(
-        width: 320,
+        width: 280,
         height: 80,
-        //alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Theme.of(context).colorScheme.secondary,
+          color: _isSelected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.secondary,
         ),
         child: Center(
-          child: Text(widget.optionText,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(color: Theme.of(context).colorScheme.primary)),
+          child: Text(
+            widget.optionText,
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: _isSelected
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.primary,
+                ),
+          ),
         ),
       ),
     );
