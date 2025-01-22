@@ -1,6 +1,10 @@
+/// The TabScreen class in Dart represents a tabbed navigation interface with Home, Results, and Profile screens.
+library;
+
 import 'package:caliber_sense/screens/home_screen.dart';
 import 'package:caliber_sense/screens/profile_screen.dart';
 import 'package:caliber_sense/screens/result_screen.dart';
+import 'package:caliber_sense/screens/results_collection.dart';
 import 'package:flutter/material.dart';
 
 class TabScreen extends StatefulWidget {

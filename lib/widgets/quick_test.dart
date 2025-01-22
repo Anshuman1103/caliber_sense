@@ -1,3 +1,6 @@
+/// The `QuickTest` class in Dart represents a widget that displays a container with text and an image, allowing users to navigate to quick test question screen upon tapping.
+library;
+
 import 'package:caliber_sense/screens/question_screen.dart';
 import 'package:flutter/material.dart';
 

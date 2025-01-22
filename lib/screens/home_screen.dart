@@ -1,3 +1,6 @@
+/// The `HomeScreen` class in Dart represents a screen with various test tiles for different types of tests.
+library;
+
 import 'package:caliber_sense/custom_widgets/test_tile.dart';
 import 'package:caliber_sense/widgets/quick_test.dart';
 import 'package:flutter/material.dart';
