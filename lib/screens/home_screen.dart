@@ -10,13 +10,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: Text(
           'Hello Anshuman',
           style: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+              .copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
       ),
       body: Padding(
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
-                  .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                  .copyWith(color: Theme.of(context).colorScheme.onSurface),
             ),
             const SizedBox(height: 15),
             TestTile(
@@ -40,18 +41,18 @@ class HomeScreen extends StatelessWidget {
               tileColor: Theme.of(context).colorScheme.secondary,
             ),
             const SizedBox(height: 15),
-            const TestTile(
+            TestTile(
               heading: 'Memory test',
               iconName: 'choices',
               subHeading: 'Test your memory retaintion power',
-              tileColor: Color.fromARGB(255, 120, 200, 120),
+              tileColor: Theme.of(context).colorScheme.secondary,
             ),
             const SizedBox(height: 15),
-            const TestTile(
+            TestTile(
               heading: 'Language test',
               iconName: 'exam',
               subHeading: 'Take comprehensive aptitude test',
-              tileColor: Color.fromARGB(255, 200, 160, 255),
+              tileColor: Theme.of(context).colorScheme.secondary,
             ),
           ],
         ),

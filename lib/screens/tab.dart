@@ -4,7 +4,6 @@ library;
 import 'package:caliber_sense/screens/home_screen.dart';
 import 'package:caliber_sense/screens/profile_screen.dart';
 import 'package:caliber_sense/screens/result_screen.dart';
-import 'package:caliber_sense/screens/results_collection.dart';
 import 'package:flutter/material.dart';
 
 class TabScreen extends StatefulWidget {
@@ -37,6 +36,9 @@ class _TabScreen extends State<TabScreen> {
     return Scaffold(
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        unselectedItemColor: Theme.of(context).colorScheme.onSecondary,
         currentIndex: _currentPageIndex,
         onTap: _selectPage,
         items: const [

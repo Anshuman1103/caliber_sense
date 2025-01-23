@@ -34,7 +34,7 @@ class ResultScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15),
-            Container(
+            SizedBox(
               height: 500,
               width: 350,
               child: Card(
@@ -53,9 +53,9 @@ class ResultScreen extends StatelessWidget {
                           color: Colors.green,
                         ),
                       ),
-                      ResultScoreCard(),
-                      ResultScoreCard(),
-                      ResultScoreCard(),
+                      const ResultScoreCard(),
+                      const ResultScoreCard(),
+                      const ResultScoreCard(),
                     ],
                   ),
                 ),
@@ -78,7 +78,7 @@ class ResultScreen extends StatelessWidget {
                 ),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  icon: Icon(Icons.download),
+                  icon: const Icon(Icons.download),
                   label: Text(
                     "Download",
                     style: GoogleFonts.roboto(

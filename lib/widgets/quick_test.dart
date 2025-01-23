@@ -44,7 +44,7 @@ class QuickTest extends StatelessWidget {
                     child: Text(
                       'Get a Quick test and know the extent of your abilities',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.primary),
+                          color: Theme.of(context).colorScheme.onPrimary),
                     ),
                   ),
                   const SizedBox(width: 20),

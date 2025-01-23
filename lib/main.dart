@@ -4,23 +4,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-final colorScheme = ColorScheme.fromSeed(
+final colorScheme = ColorScheme(
   brightness: Brightness.dark,
-  seedColor: const Color.fromARGB(255, 102, 6, 247),
 
-  primary: Colors.white, // Primary color is set to white
-  onPrimary: Colors.black, // Text/icons on primary (white) will be black
+  primary: const Color.fromARGB(255, 134, 103, 242), // Main brand color: 8667F2
+  onPrimary:
+      const Color.fromARGB(255, 255, 255, 255), // Text/icons on primary: FFFFFF
 
-  secondary: const Color.fromARGB(
-      255, 139, 147, 255), // Blue as the secondary color for accents
-  onSecondary: Colors.black, // Text/icons on secondary (blue) will be white
+  secondary: const Color.fromARGB(255, 238, 233, 255), // Accent color: E0E7FF
+  onSecondary:
+      const Color.fromARGB(255, 0, 0, 0), // Text/icons on secondary: Black
 
-  surface:
-      Colors.white, // Surface color for components like cards, sheets, etc.
-  onSurface: Colors.black87, // Text/icons on surface will be black or dark
+  surface: const Color.fromARGB(
+      255, 255, 255, 255), // Surface color for cards/sheets: E0E7FF
+  onSurface: const Color.fromARGB(255, 0, 0, 0), // Text/icons on surface: Black
 
-  error: Colors.red, // Red color for errors
-  onError: Colors.white, // White text/icons on error color
+  error: const Color.fromARGB(255, 255, 0, 0), // Error color: Red
+  onError:
+      const Color.fromARGB(255, 255, 255, 255), // Text/icons on error: White
 );
 
 final theme = ThemeData().copyWith(

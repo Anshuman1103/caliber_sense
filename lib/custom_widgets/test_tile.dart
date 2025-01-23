@@ -55,28 +55,14 @@ class TestTile extends StatelessWidget {
             title: Text(
               heading,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withOpacity(0.4),
-                    blurRadius: 10,
-                    offset: const Offset(4, 4),
-                  )
-                ],
-              ),
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
             ),
             subtitle: Text(
               subHeading,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                shadows: [
-                  Shadow(
-                    color: Colors.black.withOpacity(0.4),
-                    blurRadius: 10,
-                    offset: const Offset(4, 4),
-                  )
-                ],
-              ),
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
             ),
           ),
         ),
