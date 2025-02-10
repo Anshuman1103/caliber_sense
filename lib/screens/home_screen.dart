@@ -20,41 +20,40 @@ class HomeScreen extends StatelessWidget {
               .copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            const QuickTest(),
-            const SizedBox(height: 15),
-            Text(
-              'More specific tests',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Theme.of(context).colorScheme.onSurface),
-            ),
-            const SizedBox(height: 15),
-            TestTile(
-              heading: 'Aptitude test',
-              iconName: 'report',
-              subHeading: 'Take comprehensive aptitude test',
-              tileColor: Theme.of(context).colorScheme.secondary,
-            ),
-            const SizedBox(height: 15),
-            TestTile(
-              heading: 'Memory test',
-              iconName: 'choices',
-              subHeading: 'Test your memory retaintion power',
-              tileColor: Theme.of(context).colorScheme.secondary,
-            ),
-            const SizedBox(height: 15),
-            TestTile(
-              heading: 'Language test',
-              iconName: 'exam',
-              subHeading: 'Take comprehensive aptitude test',
-              tileColor: Theme.of(context).colorScheme.secondary,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              const QuickTest(),
+              const SizedBox(height: 15),
+              Text(
+                'More specific tests',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(color: Theme.of(context).colorScheme.onSurface),
+              ),
+              const SizedBox(height: 15),
+              const TestTile(
+                heading: 'Aptitude test',
+                iconName: 'report',
+                subHeading: 'Take comprehensive aptitude test',
+              ),
+              const SizedBox(height: 15),
+              const TestTile(
+                heading: 'Memory test',
+                iconName: 'choices',
+                subHeading: 'Test your memory retaintion power',
+              ),
+              const SizedBox(height: 15),
+              const TestTile(
+                heading: 'Language test',
+                iconName: 'exam',
+                subHeading: 'Take comprehensive aptitude test',
+              ),
+            ],
+          ),
         ),
       ),
     );

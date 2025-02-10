@@ -1,4 +1,5 @@
-import 'package:caliber_sense/widgets/option.dart';
+import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/custom_widgets/option.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatelessWidget {
@@ -6,8 +7,10 @@ class QuestionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
-      appBar: AppBar(),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: AppBar(
+        backgroundColor: colorScheme.primary,
+      ),
       body: Center(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 80),
@@ -15,15 +18,13 @@ class QuestionScreen extends StatelessWidget {
           height: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: const Color.fromARGB(255, 102, 6, 247)),
+              color: colorScheme.secondary),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Q1. First question will display here',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.primary)),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary)),
               const SizedBox(height: 50),
               const Option(optionText: 'Option 1'),
               const SizedBox(height: 20),

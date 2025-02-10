@@ -36,6 +36,7 @@ class _TabScreen extends State<TabScreen> {
     return Scaffold(
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 25,
         fixedColor: Theme.of(context).colorScheme.primary,
         backgroundColor: Theme.of(context).colorScheme.secondary,
         unselectedItemColor: Theme.of(context).colorScheme.onSecondary,

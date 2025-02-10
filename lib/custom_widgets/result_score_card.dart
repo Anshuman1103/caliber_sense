@@ -1,3 +1,4 @@
+import 'package:caliber_sense/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,9 +8,9 @@ class ResultScoreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
-      height: 100,
+      height: 80,
       child: Card(
-        color: const Color.fromARGB(255, 255, 199, 30),
+        color: colorScheme.primary,
         child: Center(
           child: ListTile(
             leading: const Icon(
