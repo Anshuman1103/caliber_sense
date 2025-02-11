@@ -37,19 +37,19 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 15),
               const TestTile(
                 heading: 'Aptitude test',
-                iconName: 'report',
+                iconName: 'mathematics',
                 subHeading: 'Take comprehensive aptitude test',
               ),
               const SizedBox(height: 15),
               const TestTile(
                 heading: 'Memory test',
-                iconName: 'choices',
+                iconName: 'brain',
                 subHeading: 'Test your memory retaintion power',
               ),
               const SizedBox(height: 15),
               const TestTile(
                 heading: 'Language test',
-                iconName: 'exam',
+                iconName: 'language',
                 subHeading: 'Take comprehensive aptitude test',
               ),
             ],

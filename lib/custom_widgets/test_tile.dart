@@ -1,6 +1,5 @@
 import 'package:caliber_sense/main.dart';
 import 'package:caliber_sense/screens/question_screen.dart';
-import 'package:caliber_sense/utilities/screen_size.dart';
 import 'package:flutter/material.dart';
 
 class TestTile extends StatelessWidget {

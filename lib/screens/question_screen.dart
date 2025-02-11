@@ -1,9 +1,10 @@
 import 'package:caliber_sense/main.dart';
-import 'package:caliber_sense/custom_widgets/option.dart';
+import 'package:caliber_sense/widgets/question_card.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatelessWidget {
   const QuestionScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,31 +12,31 @@ class QuestionScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: colorScheme.primary,
       ),
-      body: Center(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 80),
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: colorScheme.secondary),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Q1. First question will display here',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondary)),
-              const SizedBox(height: 50),
-              const Option(optionText: 'Option 1'),
-              const SizedBox(height: 20),
-              const Option(optionText: 'Option 2'),
-              const SizedBox(height: 20),
-              const Option(optionText: 'Option 3'),
-              const SizedBox(height: 20),
-              const Option(optionText: 'Option 4'),
-            ],
+      body: Stack(
+        children: [
+          const Center(
+            child: SingleChildScrollView(
+              child: QuestionCard(),
+            ),
           ),
-        ),
+          Positioned(
+            //For Skip Button
+            bottom: 20,
+            right: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                // Action to skip the question
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Question skipped'),
+                    duration: Duration(seconds: 1),
+                  ),
+                );
+              },
+              child: const Icon(Icons.skip_next),
+            ),
+          ),
+        ],
       ),
     );
   }

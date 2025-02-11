@@ -70,7 +70,9 @@ flutter:
     - assets/icons/adaptive.png
     - assets/icons/coming-soon.png
     - assets/icons/qa.png
-    - assets/icons/report.png
+    - assets/icons/brain.png
+    - assets/icons/mathematics.png
+    - assets/icons/language.png
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

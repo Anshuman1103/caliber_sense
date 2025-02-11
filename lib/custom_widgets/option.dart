@@ -20,6 +20,7 @@ class _OptionState extends State<Option> {
     });
 
     // Show a SnackBar with the selected option
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(_isSelected
@@ -34,23 +35,28 @@ class _OptionState extends State<Option> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => _handleTap(context),
-      child: Container(
-        width: 280,
-        height: 80,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minHeight: 70,
+        ),
+        child: Card(
+          elevation: 4,
           color: _isSelected
               ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.secondary,
-        ),
-        child: Center(
-          child: Text(
-            widget.optionText,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: _isSelected
-                      ? Theme.of(context).colorScheme.onPrimary
-                      : Theme.of(context).colorScheme.primary,
-                ),
+              : Theme.of(context).colorScheme.surface,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                widget.optionText,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: _isSelected
+                          ? Theme.of(context).colorScheme.onPrimary
+                          : Theme.of(context).colorScheme.primary,
+                    ),
+              ),
+            ),
           ),
         ),
       ),
