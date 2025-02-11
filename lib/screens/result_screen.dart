@@ -2,7 +2,7 @@
 library;
 
 import 'package:caliber_sense/main.dart';
-import 'package:caliber_sense/custom_widgets/result_score_card.dart';
+import 'package:caliber_sense/widgets/result_score_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

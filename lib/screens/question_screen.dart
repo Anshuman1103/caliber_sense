@@ -1,5 +1,5 @@
 import 'package:caliber_sense/main.dart';
-import 'package:caliber_sense/widgets/question_card.dart';
+import 'package:caliber_sense/custom_widgets/question_card.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatelessWidget {
@@ -12,28 +12,42 @@ class QuestionScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: colorScheme.primary,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          const Center(
-            child: SingleChildScrollView(
-              child: QuestionCard(),
-            ),
-          ),
-          Positioned(
-            //For Skip Button
-            bottom: 20,
-            right: 20,
-            child: FloatingActionButton(
-              onPressed: () {
-                // Action to skip the question
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Question skipped'),
-                    duration: Duration(seconds: 1),
+          Expanded(
+            child: Stack(
+              children: [
+                const Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          //Helps to make circular card visible
+                          height: 55,
+                        ),
+                        QuestionCard(),
+                      ],
+                    ),
                   ),
-                );
-              },
-              child: const Icon(Icons.skip_next),
+                ),
+                Positioned(
+                  //For Skip Button
+                  bottom: 20,
+                  right: 20,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      // Action to skip the question
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Question skipped'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    },
+                    child: const Icon(Icons.skip_next),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

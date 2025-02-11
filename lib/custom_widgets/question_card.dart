@@ -14,6 +14,7 @@ class QuestionCard extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Padding(
+              //Padding for card to screen boundary
               padding: const EdgeInsets.symmetric(
                 vertical: 10,
                 horizontal: 20,
