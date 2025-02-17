@@ -2,6 +2,8 @@
 library;
 
 import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/screens/home_screen.dart';
+import 'package:caliber_sense/screens/tab.dart';
 import 'package:caliber_sense/widgets/result_score_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -99,7 +101,12 @@ class ResultScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TabScreen()));
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primary),
                   child: Text(

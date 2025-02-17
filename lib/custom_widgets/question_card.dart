@@ -1,12 +1,32 @@
 import 'package:caliber_sense/custom_widgets/option.dart';
+import 'package:caliber_sense/models/question.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class QuestionCard extends StatelessWidget {
-  const QuestionCard({super.key});
+class QuestionCard extends StatefulWidget {
+  const QuestionCard({
+    super.key,
+    required this.question,
+    required this.onOptionSelected,
+    required this.selectedOptionIndex,
+    required this.currentQuestionIndex,
+  });
+
+  final Question question;
+  final Function(int) onOptionSelected;
+  final int? selectedOptionIndex;
+  final int currentQuestionIndex;
+
+  @override
+  State<QuestionCard> createState() => _QuestionCardState();
+}
+
+class _QuestionCardState extends State<QuestionCard> {
+  late int currentQuestionNumber;
 
   @override
   Widget build(BuildContext context) {
+    currentQuestionNumber = widget.currentQuestionIndex;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -34,24 +54,30 @@ class QuestionCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(5, 20, 5, 20),
                         child: Text(
-                          'NBA score I want that the text field must not get inside a circular rounded card that is showing the number but when somehow the spin size change its sometime get inside of the card which make it not visible perfectly correct this error and so tell me how you corrected that',
+                          widget.question.questionText,
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
                               .copyWith(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondary),
+                                color:
+                                    Theme.of(context).colorScheme.onSecondary,
+                              ),
                         ),
                       ),
-                      const Option(optionText: 'Option 1'),
-                      const SizedBox(height: 8),
-                      const Option(optionText: 'Option 2'),
-                      const SizedBox(height: 8),
-                      const Option(optionText: 'Option 3'),
-                      const SizedBox(height: 8),
-                      const Option(optionText: 'Option 4'),
+                      //To display options here
+                      ...widget.question.options.asMap().entries.map((entry) {
+                        int idx = entry.key;
+                        String optionText = entry.value;
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Option(
+                              optionText: optionText,
+                              isSelected: widget.selectedOptionIndex == idx,
+                              onOptionSelected: () =>
+                                  widget.onOptionSelected(idx)),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -73,7 +99,7 @@ class QuestionCard extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   child: Text(
-                    "1",
+                    (currentQuestionNumber + 1).toString(),
                     textAlign: TextAlign.center,
                     style: GoogleFonts.roboto(
                         fontSize: 40,
