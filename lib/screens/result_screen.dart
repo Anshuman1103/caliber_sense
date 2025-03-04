@@ -2,7 +2,6 @@
 library;
 
 import 'package:caliber_sense/main.dart';
-import 'package:caliber_sense/screens/home_screen.dart';
 import 'package:caliber_sense/screens/tab.dart';
 import 'package:caliber_sense/widgets/result_score_card.dart';
 import 'package:flutter/material.dart';
