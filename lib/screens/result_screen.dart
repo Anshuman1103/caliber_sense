@@ -2,15 +2,21 @@
 library;
 
 import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/provider/scores_provider.dart';
 import 'package:caliber_sense/screens/tab.dart';
 import 'package:caliber_sense/widgets/result_score_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends ConsumerWidget {
   const ResultScreen({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final aptitudeScore = ref.watch(scoresProvider).aptitudeScore;
+    final languageScore = ref.watch(scoresProvider).languageScore;
+    final memoryScore = ref.watch(scoresProvider).memoryScore;
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
@@ -47,19 +53,19 @@ class ResultScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const ResultScoreCard(
+                        ResultScoreCard(
                           testName: "Aptitude",
-                          score: '80%',
+                          score: (aptitudeScore / 10) * 100,
                           iconImage: 'assets/icons/mathematics.png',
                         ),
-                        const ResultScoreCard(
+                        ResultScoreCard(
                           testName: "Memory",
-                          score: '60%',
+                          score: (memoryScore / 10) * 100,
                           iconImage: 'assets/icons/brain.png',
                         ),
-                        const ResultScoreCard(
+                        ResultScoreCard(
                           testName: "Language",
-                          score: '60%',
+                          score: (languageScore / 10) * 100,
                           iconImage: 'assets/icons/language.png',
                         ),
                       ],

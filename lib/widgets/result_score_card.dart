@@ -15,7 +15,7 @@ class ResultScoreCard extends StatelessWidget {
 
   final String iconImage;
   final String testName;
-  final String score;
+  final double score;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ResultScoreCard extends StatelessWidget {
               ),
             ),
             trailing: Text(
-              score,
+              score.toInt().toString(),
               style: GoogleFonts.roboto(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
