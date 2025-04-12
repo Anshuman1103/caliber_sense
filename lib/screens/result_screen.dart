@@ -13,9 +13,30 @@ class ResultScreen extends ConsumerWidget {
   const ResultScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final aptitudeScore = ref.watch(scoresProvider).gainedAptitudeScore;
-    final languageScore = ref.watch(scoresProvider).gainedLanguageScore;
-    final memoryScore = ref.watch(scoresProvider).gainedMemoryScore;
+    final gainedAptitudeScore = ref.watch(scoresProvider).gainedAptitudeScore;
+    final totalAptitudeScore = ref.watch(scoresProvider).totalAptitudeScore;
+    final gainedLanguageScore = ref.watch(scoresProvider).gainedLanguageScore;
+    final totalLanguageScore = ref.watch(scoresProvider).totalLanguageScore;
+    final gainedMemoryScore = ref.watch(scoresProvider).gainedMemoryScore;
+    //final totalMemoryScore = ref.watch(scoresProvider).totalMemoryScore;
+
+    final totalMemoryScore =
+        10; // Assuming a fixed total memory score for demonstration
+    // This should be replaced with the actual total memory score from your provider
+
+    int precentageScore = (((gainedAptitudeScore +
+                    gainedLanguageScore +
+                    gainedMemoryScore) /
+                (totalAptitudeScore + totalLanguageScore + gainedMemoryScore)) *
+            100)
+        .toInt();
+    // print(precentageScore);
+    // print(gainedAptitudeScore);
+    // print(totalAptitudeScore);
+    // print(gainedLanguageScore);
+    // print(totalLanguageScore);
+    // print(gainedMemoryScore);
+    // print(totalMemoryScore);
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -55,18 +76,19 @@ class ResultScreen extends ConsumerWidget {
                         ),
                         ResultScoreCard(
                           testName: "Aptitude",
-                          score: (aptitudeScore / 10) * 100,
+                          score:
+                              (gainedAptitudeScore / totalAptitudeScore) * 100,
                           iconImage: 'assets/icons/mathematics.png',
                         ),
                         ResultScoreCard(
-                          testName: "Memory",
-                          score: (memoryScore / 10) * 100,
-                          iconImage: 'assets/icons/brain.png',
+                          testName: "Language",
+                          score: (gainedLanguageScore / totalMemoryScore) * 100,
+                          iconImage: 'assets/icons/language.png',
                         ),
                         ResultScoreCard(
-                          testName: "Language",
-                          score: (languageScore / 10) * 100,
-                          iconImage: 'assets/icons/language.png',
+                          testName: "Memory",
+                          score: (gainedMemoryScore / totalMemoryScore) * 100,
+                          iconImage: 'assets/icons/brain.png',
                         ),
                       ],
                     ),
@@ -90,7 +112,7 @@ class ResultScreen extends ConsumerWidget {
                       color: colorScheme.primary,
                     ),
                     child: Text(
-                      '${((aptitudeScore + languageScore) / 20 * 100).toInt()}%',
+                      '$precentageScore%',
                       style: GoogleFonts.roboto(
                           fontSize: 60,
                           fontWeight: FontWeight.bold,

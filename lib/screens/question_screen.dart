@@ -41,30 +41,28 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
     });
     // Perform any validation or scoring logic here
     Question currentQuestion = _questions[_currentQuestionIndex];
+    int gainedMarks = 0;
     if (index == currentQuestion.correctAnswerIndex) {
-      switch (currentQuestion.category) {
-        case QuestionCategory.aptitude:
-          ref.read(scoresProvider.notifier).updateAptitudeScore(
-              ref.read(scoresProvider).gainedAptitudeScore +
-                  currentQuestion.marks,
-              ref.read(scoresProvider).totalAptitudeScore +
-                  currentQuestion.marks);
-          break;
-        case QuestionCategory.language:
-          ref.read(scoresProvider.notifier).updateLanguageScore(
-              ref.read(scoresProvider).gainedLanguageScore +
-                  currentQuestion.marks,
-              ref.read(scoresProvider).totalLanguageScore +
-                  currentQuestion.marks);
-          break;
-        case QuestionCategory.memory:
-          ref.read(scoresProvider.notifier).updateMemoryScore(
-              ref.read(scoresProvider).gainedMemoryScore +
-                  currentQuestion.marks,
-              ref.read(scoresProvider).totalMemoryScore +
-                  currentQuestion.marks);
-          break;
-      }
+      gainedMarks = currentQuestion.marks;
+    }
+    switch (currentQuestion.category) {
+      case QuestionCategory.aptitude:
+        ref.read(scoresProvider.notifier).updateAptitudeScore(
+            ref.read(scoresProvider).gainedAptitudeScore + gainedMarks,
+            ref.read(scoresProvider).totalAptitudeScore +
+                currentQuestion.marks);
+        break;
+      case QuestionCategory.language:
+        ref.read(scoresProvider.notifier).updateLanguageScore(
+            ref.read(scoresProvider).gainedLanguageScore + gainedMarks,
+            ref.read(scoresProvider).totalLanguageScore +
+                currentQuestion.marks);
+        break;
+      case QuestionCategory.memory:
+        ref.read(scoresProvider.notifier).updateMemoryScore(
+            ref.read(scoresProvider).gainedMemoryScore + gainedMarks,
+            ref.read(scoresProvider).totalMemoryScore + currentQuestion.marks);
+        break;
     }
 
     // Delay before moving to the next question
