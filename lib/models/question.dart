@@ -4,6 +4,7 @@ class Question {
   int correctAnswerIndex;
   int marks;
   QuestionCategory category;
+  DifficultyLevel difficulty;
 
   Question({
     required this.questionText,
@@ -11,6 +12,7 @@ class Question {
     required this.correctAnswerIndex,
     required this.marks,
     required this.category,
+    required this.difficulty,
   });
 }
 
@@ -18,4 +20,10 @@ enum QuestionCategory {
   aptitude,
   language,
   memory,
+}
+
+enum DifficultyLevel {
+  easy,
+  medium,
+  hard,
 }

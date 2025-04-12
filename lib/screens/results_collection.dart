@@ -1,3 +1,4 @@
+import 'package:caliber_sense/custom_widgets/result_list_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsCollection extends StatelessWidget {
@@ -7,19 +8,15 @@ class ResultsCollection extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Your Result',
+          'Your Results',
           style: Theme.of(context)
               .textTheme
               .titleLarge!
               .copyWith(color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
-      body: Center(
-        child: Image.asset(
-          'assets/icons/coming-soon.png',
-          height: 200,
-          width: 200,
-        ),
+      body: const Center(
+        child: ResultListCard(),
       ),
     );
   }

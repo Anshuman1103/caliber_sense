@@ -13,9 +13,9 @@ class ResultScreen extends ConsumerWidget {
   const ResultScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final aptitudeScore = ref.watch(scoresProvider).aptitudeScore;
-    final languageScore = ref.watch(scoresProvider).languageScore;
-    final memoryScore = ref.watch(scoresProvider).memoryScore;
+    final aptitudeScore = ref.watch(scoresProvider).gainedAptitudeScore;
+    final languageScore = ref.watch(scoresProvider).gainedLanguageScore;
+    final memoryScore = ref.watch(scoresProvider).gainedMemoryScore;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -90,7 +90,7 @@ class ResultScreen extends ConsumerWidget {
                       color: colorScheme.primary,
                     ),
                     child: Text(
-                      "80%",
+                      '${((aptitudeScore + languageScore) / 20 * 100).toInt()}%',
                       style: GoogleFonts.roboto(
                           fontSize: 60,
                           fontWeight: FontWeight.bold,

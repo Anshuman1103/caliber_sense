@@ -5,45 +5,74 @@ class ScoresNotifier extends StateNotifier<UserScores> {
   ScoresNotifier()
       : super(
           UserScores(
-            aptitudeScore: 0,
-            languageScore: 0,
-            memoryScore: 0,
+            totalAptitudeScore: 0,
+            gainedAptitudeScore: 0,
+            totalLanguageScore: 0,
+            gainedLanguageScore: 0,
+            totalMemoryScore: 0,
+            gainedMemoryScore: 0,
           ),
         );
 
-  void updateMemoryScore(int score) {
+  void updateMemoryScore(int score, int totalScore) {
     state = UserScores(
-      aptitudeScore: state.aptitudeScore,
-      languageScore: state.languageScore,
-      memoryScore: score,
+      totalAptitudeScore: state.totalAptitudeScore,
+      gainedAptitudeScore: state.gainedAptitudeScore,
+      totalLanguageScore: state.totalLanguageScore,
+      gainedLanguageScore: state.gainedLanguageScore,
+      totalMemoryScore: totalScore,
+      gainedMemoryScore: score,
     );
   }
 
-  void updateAptitudeScore(int score) {
+  void updateAptitudeScore(int score, int totalScore) {
     state = UserScores(
-      aptitudeScore: score,
-      languageScore: state.languageScore,
-      memoryScore: state.memoryScore,
+      totalLanguageScore: state.totalLanguageScore,
+      gainedLanguageScore: state.gainedLanguageScore,
+      totalMemoryScore: state.totalMemoryScore,
+      gainedMemoryScore: state.gainedMemoryScore,
+      totalAptitudeScore: totalScore,
+      gainedAptitudeScore: score,
     );
   }
 
-  void updateLanguageScore(int score) {
+  void updateLanguageScore(int score, int totalScore) {
     state = UserScores(
-      aptitudeScore: state.aptitudeScore,
-      languageScore: score,
-      memoryScore: state.memoryScore,
+      totalAptitudeScore: state.totalAptitudeScore,
+      gainedAptitudeScore: state.gainedAptitudeScore,
+      totalLanguageScore: totalScore,
+      gainedLanguageScore: score,
+      totalMemoryScore: state.totalMemoryScore,
+      gainedMemoryScore: state.gainedMemoryScore,
     );
   }
 
   void updateAllScore({
-    required int memoryScore,
-    required int aptitudeScore,
-    required int languageScore,
+    required int totalAptitudeScore,
+    required int gainedAptitudeScore,
+    required int totalLanguageScore,
+    required int gainedLanguageScore,
+    required int totalMemoryScore,
+    required int gainedMemoryScore,
   }) {
     state = UserScores(
-      aptitudeScore: aptitudeScore,
-      languageScore: languageScore,
-      memoryScore: memoryScore,
+      totalAptitudeScore: totalAptitudeScore,
+      gainedAptitudeScore: gainedAptitudeScore,
+      totalLanguageScore: totalLanguageScore,
+      gainedLanguageScore: gainedLanguageScore,
+      totalMemoryScore: totalMemoryScore,
+      gainedMemoryScore: gainedMemoryScore,
+    );
+  }
+
+  void resetAllScore() {
+    state = UserScores(
+      totalAptitudeScore: 0,
+      gainedAptitudeScore: 0,
+      totalLanguageScore: 0,
+      gainedLanguageScore: 0,
+      totalMemoryScore: 0,
+      gainedMemoryScore: 0,
     );
   }
 }

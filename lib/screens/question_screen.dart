@@ -2,17 +2,19 @@ import 'package:caliber_sense/data/all_questions.dart';
 import 'package:caliber_sense/main.dart';
 import 'package:caliber_sense/custom_widgets/question_card.dart';
 import 'package:caliber_sense/models/question.dart';
+import 'package:caliber_sense/provider/scores_provider.dart';
 import 'package:caliber_sense/screens/result_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class QuestionScreen extends StatefulWidget {
+class QuestionScreen extends ConsumerStatefulWidget {
   const QuestionScreen({super.key});
 
   @override
-  State<QuestionScreen> createState() => _QuestionScreenState();
+  ConsumerState<QuestionScreen> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _QuestionScreenState extends ConsumerState<QuestionScreen> {
   final List<Question> _questions =
       AllQuestions.questions; //The list of question is fetch by this
 
@@ -38,6 +40,32 @@ class _QuestionScreenState extends State<QuestionScreen> {
       _selectedOptionIndex = index;
     });
     // Perform any validation or scoring logic here
+    Question currentQuestion = _questions[_currentQuestionIndex];
+    if (index == currentQuestion.correctAnswerIndex) {
+      switch (currentQuestion.category) {
+        case QuestionCategory.aptitude:
+          ref.read(scoresProvider.notifier).updateAptitudeScore(
+              ref.read(scoresProvider).gainedAptitudeScore +
+                  currentQuestion.marks,
+              ref.read(scoresProvider).totalAptitudeScore +
+                  currentQuestion.marks);
+          break;
+        case QuestionCategory.language:
+          ref.read(scoresProvider.notifier).updateLanguageScore(
+              ref.read(scoresProvider).gainedLanguageScore +
+                  currentQuestion.marks,
+              ref.read(scoresProvider).totalLanguageScore +
+                  currentQuestion.marks);
+          break;
+        case QuestionCategory.memory:
+          ref.read(scoresProvider.notifier).updateMemoryScore(
+              ref.read(scoresProvider).gainedMemoryScore +
+                  currentQuestion.marks,
+              ref.read(scoresProvider).totalMemoryScore +
+                  currentQuestion.marks);
+          break;
+      }
+    }
 
     // Delay before moving to the next question
     await Future.delayed(const Duration(milliseconds: 300));

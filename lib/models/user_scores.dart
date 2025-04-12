@@ -1,11 +1,17 @@
 class UserScores {
-  final languageScore;
-  final aptitudeScore;
-  final memoryScore;
+  final totalAptitudeScore;
+  final gainedAptitudeScore;
+  final totalLanguageScore;
+  final gainedLanguageScore;
+  final totalMemoryScore;
+  final gainedMemoryScore;
 
   UserScores({
-    required this.aptitudeScore,
-    required this.languageScore,
-    required this.memoryScore,
+    required this.totalAptitudeScore,
+    required this.gainedAptitudeScore,
+    required this.totalLanguageScore,
+    required this.gainedLanguageScore,
+    required this.totalMemoryScore,
+    required this.gainedMemoryScore,
   });
 }
