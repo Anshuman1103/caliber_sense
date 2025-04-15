@@ -20,7 +20,7 @@ class ResultScreen extends ConsumerWidget {
     final gainedMemoryScore = ref.watch(scoresProvider).gainedMemoryScore;
     //final totalMemoryScore = ref.watch(scoresProvider).totalMemoryScore;
 
-    final totalMemoryScore =
+    const totalMemoryScore =
         10; // Assuming a fixed total memory score for demonstration
     // This should be replaced with the actual total memory score from your provider
 

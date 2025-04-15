@@ -1,5 +1,7 @@
+import 'package:uuid/uuid.dart';
+
 class ResultModel {
-  //uuid required
+  String id;
   TestType testType;
   int? aptitudeScore;
   int? languageScore;
@@ -12,7 +14,7 @@ class ResultModel {
     required this.languageScore,
     required this.memoryScore,
     required this.percentage,
-  });
+  }) : id = const Uuid().v4();
 }
 
 enum TestType {
