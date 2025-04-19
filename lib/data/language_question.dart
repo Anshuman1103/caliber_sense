@@ -1,8 +1,105 @@
 import 'package:caliber_sense/models/question.dart';
 
-class AllQuestions {
+class LanguageQuestion {
   static final List<Question> questions = [
     // Language Questions
+    Question(
+      questionText: 'Choose the correctly spelled word:',
+      options: ['Acommodate', 'Accommodate', 'Acomodate', 'Acommmodate'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Identify the synonym of the word "Rapid":',
+      options: ['Slow', 'Quick', 'Calm', 'Heavy'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Select the correct plural form of "Analysis":',
+      options: ['Analysises', 'Analys', 'Analyses', 'Analysises'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'Choose the correct form: “She ____ to the store yesterday.”',
+      options: ['go', 'gone', 'went', 'going'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Fill in the blank: “The sun ____ in the east.”',
+      options: ['rise', 'rises', 'rose', 'raising'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Find the antonym of “Generous”:',
+      options: ['Kind', 'Selfish', 'Gentle', 'Helpful'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Which sentence is grammatically correct?',
+      options: [
+        'He don’t like apples.',
+        'He doesn’t likes apples.',
+        'He doesn’t like apples.',
+        'He not like apples.'
+      ],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'Identify the noun in the sentence: “The cat sat on the mat.”',
+      options: ['sat', 'on', 'mat', 'cat'],
+      correctAnswerIndex: 3,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Choose the correct article: “She bought ____ apple.”',
+      options: ['a', 'an', 'the', 'no article needed'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Which of the following is a verb?',
+      options: ['Happy', 'Run', 'Blue', 'Quick'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.language,
+      difficulty: DifficultyLevel.easy,
+    ),
+
     Question(
       questionText: 'Choose the correctly spelled word:',
       options: ['Recieve', 'Receive', 'Receeve', 'Recive'],

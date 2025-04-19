@@ -7,19 +7,30 @@ import 'package:google_fonts/google_fonts.dart';
 
 const colorScheme = ColorScheme(
   brightness: Brightness.dark,
-  primary: Color.fromARGB(255, 170, 140, 255), // Main brand color: 8667F2
-  onPrimary:
-      Color.fromARGB(255, 255, 255, 255), // Text/icons on primary: FFFFFF
+  // Primary brand color – a soft purple accent for dark backgrounds
+  primary: Color.fromARGB(255, 106, 13, 173), // #AA8CFF
 
-  secondary: Color.fromARGB(255, 238, 233, 255), // Accent color: E0E7FF
-  onSecondary: Color.fromARGB(255, 0, 0, 0), // Text/icons on secondary: Black
+  // Text/icon color used on top of primary color (should be light in dark theme)
+  onPrimary: Color.fromARGB(
+      255, 255, 255, 255), // Black for better contrast on light primary
 
-  surface: Color.fromARGB(
-      255, 255, 255, 255), // Surface color for cards/sheets: E0E7FF
-  onSurface: Color.fromARGB(255, 0, 0, 0), // Text/icons on surface: Black
+  // Secondary accent color (lighter tone for cards/buttons)
+  secondary: Color.fromARGB(255, 37, 43, 55), // #7668C0
 
-  error: Color.fromARGB(255, 255, 0, 0), // Error color: Red
-  onError: Color.fromARGB(255, 255, 255, 255), // Text/icons on error: White
+  // Text/icon color on secondary (should be light)
+  onSecondary: Color.fromARGB(255, 255, 255, 255), // White
+
+  // Background surface like Scaffold, cards, sheets
+  surface: Color.fromARGB(255, 51, 60, 77), // #1C1C1E - dark grey
+
+  // Text/icons on top of surface
+  onSurface: Color.fromARGB(255, 255, 255, 255), // White
+
+  // Error red
+  error: Color.fromARGB(255, 255, 69, 58), // Soft red for dark background
+
+  // Text/icons on error surfaces
+  onError: Color.fromARGB(255, 255, 255, 255), // White
 );
 
 final theme = ThemeData().copyWith(

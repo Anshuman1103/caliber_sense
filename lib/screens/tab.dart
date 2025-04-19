@@ -44,7 +44,7 @@ class _TabScreen extends State<TabScreen> {
         onTap: _selectPage,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           BottomNavigationBarItem(

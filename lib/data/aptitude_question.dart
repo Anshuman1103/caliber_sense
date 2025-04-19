@@ -1,7 +1,100 @@
 import 'package:caliber_sense/models/question.dart';
 
-class AllQuestions {
+class AptitudeQuestion {
   static final List<Question> questions = [
+    Question(
+      questionText:
+          'A train 150 meters long is running at 45 km/h. How long will it take to pass a man standing on the platform?',
+      options: ['8 sec', '12 sec', '10 sec', '15 sec'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'What is the next number in the series: 2, 4, 8, 16, ?',
+      options: ['18', '24', '32', '20'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'If the cost of 5 pens is ₹60, what is the cost of 8 pens?',
+      options: ['₹90', '₹96', '₹100', '₹84'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'A man buys an article for ₹250 and sells it for ₹300. What is his profit percentage?',
+      options: ['20%', '25%', '15%', '10%'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'How many hours are there in 2 days and 5 hours?',
+      options: ['48', '53', '50', '45'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'A shopkeeper sells a book for ₹120 at a loss of 20%. What was the cost price?',
+      options: ['₹150', '₹100', '₹130', '₹140'],
+      correctAnswerIndex: 0,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'What is the value of 3² + 4²?',
+      options: ['25', '20', '18', '30'],
+      correctAnswerIndex: 0,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'If you divide 72 by 9, what do you get?',
+      options: ['8', '9', '7', '6'],
+      correctAnswerIndex: 0,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'Which number is even?',
+      options: ['7', '3', '9', '8'],
+      correctAnswerIndex: 3,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'What comes after 14 in counting?',
+      options: ['13', '16', '15', '12'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.aptitude,
+      difficulty: DifficultyLevel.easy,
+    ),
+
     Question(
       questionText:
           'If the time is 4:20 PM now, what will be the time after 150 minutes?',

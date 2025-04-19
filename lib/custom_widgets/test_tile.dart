@@ -17,8 +17,8 @@ class TestTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void questionScreen() {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (ctx) => const QuestionScreen()));
+      // Navigator.of(context)
+      //     .push(MaterialPageRoute(builder: (ctx) => const QuestionScreen()));
     }
 
     return InkWell(

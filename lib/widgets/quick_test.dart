@@ -2,6 +2,7 @@
 library;
 
 import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/models/question.dart';
 import 'package:caliber_sense/screens/question_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,17 @@ class QuickTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void questionScreen() {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (ctx) => const QuestionScreen()));
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => const QuestionScreen(
+            questionCategory: QuestionCategory.aptitude,
+            difficultyLevel: DifficultyLevel.easy,
+            aptitudeQuestions: 5,
+            laguageQuestions: 5,
+            memoryQuestions: 5,
+          ),
+        ),
+      );
     }
 
     return InkWell(

@@ -1,7 +1,106 @@
 import 'package:caliber_sense/models/question.dart';
 
-class AllQuestions {
+class MemoryQuestions {
   static final List<Question> questions = [
+    Question(
+      questionText:
+          'Remember this sequence: 7, 2, 9, 5. What was the third number?',
+      options: ['2', '7', '9', '5'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'You saw a list: Apple, Banana, Orange, Grape. Which fruit came last?',
+      options: ['Banana', 'Orange', 'Grape', 'Apple'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'Which color was **not** in this sequence? Red, Blue, Green, Yellow',
+      options: ['Red', 'Blue', 'Green', 'Orange'],
+      correctAnswerIndex: 3,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'You read: Tom, Lucy, Mike, Sarah. Who was second on the list?',
+      options: ['Mike', 'Lucy', 'Sarah', 'Tom'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'You saw the number: 5429. What digit was in the hundreds place?',
+      options: ['4', '5', '2', '9'],
+      correctAnswerIndex: 0,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'You read a list of animals: Cat, Dog, Lion, Tiger. Which animal came third?',
+      options: ['Lion', 'Cat', 'Dog', 'Tiger'],
+      correctAnswerIndex: 0,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText: 'A phone number was shown: 9837. What was the last digit?',
+      options: ['3', '8', '7', '9'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'Which of these words did **not** appear: Chair, Table, Pen, Window?',
+      options: ['Chair', 'Window', 'Pen', 'Notebook'],
+      correctAnswerIndex: 3,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'You saw: Blue, Red, Blue, Green. Which color appeared twice?',
+      options: ['Green', 'Red', 'Blue', 'Yellow'],
+      correctAnswerIndex: 2,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
+    Question(
+      questionText:
+          'Which of the following is the **first** number in the sequence: 6, 4, 2, 8?',
+      options: ['4', '6', '2', '8'],
+      correctAnswerIndex: 1,
+      marks: 1,
+      category: QuestionCategory.memory,
+      difficulty: DifficultyLevel.easy,
+    ),
+
     Question(
       questionText: 'Remember this number: 47913. What was the third digit?',
       options: ['7', '9', '1', '3'],
