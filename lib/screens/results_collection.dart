@@ -1,4 +1,3 @@
-import 'package:caliber_sense/custom_widgets/result_list_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsCollection extends StatelessWidget {
