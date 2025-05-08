@@ -74,6 +74,22 @@ flutter:
     - assets/icons/brain.png
     - assets/icons/mathematics.png
     - assets/icons/language.png
+    - assets/images/m1.png
+    - assets/images/m2.png
+    - assets/images/m3.png
+    - assets/images/m4.png
+    - assets/images/m5.png
+    - assets/images/m6.png
+    - assets/images/m7.png
+    - assets/images/m8.png
+    - assets/images/m9.png
+    - assets/images/m10.png
+    - assets/images/m11.png
+    - assets/images/m12.png
+    - assets/images/m13.png
+    - assets/images/m14.png
+    - assets/images/m15.png
+
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

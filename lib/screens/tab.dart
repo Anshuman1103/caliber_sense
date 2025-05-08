@@ -3,7 +3,7 @@ library;
 
 import 'package:caliber_sense/screens/home_screen.dart';
 import 'package:caliber_sense/screens/profile_screen.dart';
-import 'package:caliber_sense/screens/result_screen.dart';
+import 'package:caliber_sense/screens/results_collection.dart';
 import 'package:flutter/material.dart';
 
 class TabScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _TabScreen extends State<TabScreen> {
     Widget activeScreen = const HomeScreen();
 
     if (_currentPageIndex == 1) {
-      activeScreen = const ResultScreen();
+      activeScreen = const ResultsCollection();
     } else if (_currentPageIndex == 2) {
       activeScreen = const ProfileScreen();
     }
@@ -47,10 +47,10 @@ class _TabScreen extends State<TabScreen> {
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_snippet),
-            label: 'Results',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.text_snippet),
+          //   label: 'Results',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Profile',

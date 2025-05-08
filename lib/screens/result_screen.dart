@@ -13,30 +13,42 @@ class ResultScreen extends ConsumerWidget {
   const ResultScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final gainedAptitudeScore = ref.watch(scoresProvider).gainedAptitudeScore;
-    final totalAptitudeScore = ref.watch(scoresProvider).totalAptitudeScore;
-    final gainedLanguageScore = ref.watch(scoresProvider).gainedLanguageScore;
-    final totalLanguageScore = ref.watch(scoresProvider).totalLanguageScore;
-    final gainedMemoryScore = ref.watch(scoresProvider).gainedMemoryScore;
-    //final totalMemoryScore = ref.watch(scoresProvider).totalMemoryScore;
+    final gainedAptitudeScore = ref.read(scoresProvider).gainedAptitudeScore;
+    final totalAptitudeScore = ref.read(scoresProvider).totalAptitudeScore;
+    final gainedLanguageScore = ref.read(scoresProvider).gainedLanguageScore;
+    final totalLanguageScore = ref.read(scoresProvider).totalLanguageScore;
+    final gainedMemoryScore = ref.read(scoresProvider).gainedMemoryScore;
+    final totalMemoryScore = ref.read(scoresProvider).totalMemoryScore;
 
-    const totalMemoryScore =
-        10; // Assuming a fixed total memory score for demonstration
-    // This should be replaced with the actual total memory score from your provider
+    // ✅ Compute total and gained scores
+    final int gainedScore =
+        gainedAptitudeScore + gainedLanguageScore + gainedMemoryScore;
+    var totalScore = totalAptitudeScore + totalLanguageScore + totalMemoryScore;
 
-    int precentageScore = (((gainedAptitudeScore +
-                    gainedLanguageScore +
-                    gainedMemoryScore) /
-                (totalAptitudeScore + totalLanguageScore + gainedMemoryScore)) *
-            100)
-        .toInt();
-    // print(precentageScore);
+    //print(percentageScore);
     // print(gainedAptitudeScore);
     // print(totalAptitudeScore);
     // print(gainedLanguageScore);
     // print(totalLanguageScore);
     // print(gainedMemoryScore);
     // print(totalMemoryScore);
+
+    // print(gainedScore);
+    // print(totalScore);
+
+// ✅ Safe percentage calculation
+    final int percentageScore =
+        (totalScore == 0) ? 100 : ((gainedScore / totalScore) * 100).round();
+
+    void resetScore() {
+      ref.read(scoresProvider.notifier).resetAllScore();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const TabScreen(),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -64,7 +76,7 @@ class ResultScreen extends ConsumerWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 30),
                               child: Text(
-                                "Very Good",
+                                "Result",
                                 style: GoogleFonts.roboto(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
@@ -76,18 +88,25 @@ class ResultScreen extends ConsumerWidget {
                         ),
                         ResultScoreCard(
                           testName: "Aptitude",
-                          score:
-                              (gainedAptitudeScore / totalAptitudeScore) * 100,
+                          score: (totalAptitudeScore == 0)
+                              ? 0
+                              : (gainedAptitudeScore / totalAptitudeScore) *
+                                  100,
                           iconImage: 'assets/icons/mathematics.png',
                         ),
                         ResultScoreCard(
                           testName: "Language",
-                          score: (gainedLanguageScore / totalMemoryScore) * 100,
+                          score: (totalLanguageScore == 0)
+                              ? 0
+                              : (gainedLanguageScore / totalLanguageScore) *
+                                  100,
                           iconImage: 'assets/icons/language.png',
                         ),
                         ResultScoreCard(
                           testName: "Memory",
-                          score: (gainedMemoryScore / totalMemoryScore) * 100,
+                          score: (totalMemoryScore == 0)
+                              ? 0
+                              : (gainedMemoryScore / totalMemoryScore) * 100,
                           iconImage: 'assets/icons/brain.png',
                         ),
                       ],
@@ -112,7 +131,7 @@ class ResultScreen extends ConsumerWidget {
                       color: colorScheme.primary,
                     ),
                     child: Text(
-                      '$precentageScore%',
+                      '$percentageScore %',
                       style: GoogleFonts.roboto(
                           fontSize: 60,
                           fontWeight: FontWeight.bold,
@@ -128,12 +147,7 @@ class ResultScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const TabScreen()));
-                  },
+                  onPressed: resetScore,
                   style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primary),
                   child: Text(
@@ -145,7 +159,25 @@ class ResultScreen extends ConsumerWidget {
                     ),
                   )),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'This feature is currently not available.',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.white, // Customize text color
+                              fontWeight:
+                                  FontWeight.bold, // Optional for emphasis
+                            ),
+                      ),
+                      backgroundColor:
+                          Colors.red, // Optional: Customize background color
+                      duration: const Duration(
+                          seconds: 3), // Optional: Customize duration
+                    ),
+                  );
+                },
                 icon: Icon(
                   Icons.download,
                   color: Theme.of(context).colorScheme.onPrimary,

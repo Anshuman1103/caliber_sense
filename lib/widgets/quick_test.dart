@@ -18,7 +18,7 @@ class QuickTest extends StatelessWidget {
             questionCategory: QuestionCategory.aptitude,
             difficultyLevel: DifficultyLevel.easy,
             aptitudeQuestions: 5,
-            laguageQuestions: 5,
+            languageQuestions: 5,
             memoryQuestions: 5,
           ),
         ),

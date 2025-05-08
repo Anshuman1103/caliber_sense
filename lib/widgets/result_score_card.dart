@@ -19,6 +19,7 @@ class ResultScoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var percentage = score.toInt().toString();
     return SizedBox(
       width: 300,
       height: 80,
@@ -36,7 +37,7 @@ class ResultScoreCard extends StatelessWidget {
               ),
             ),
             trailing: Text(
-              score.toInt().toString(),
+              '$percentage %',
               style: GoogleFonts.roboto(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@
 library;
 
 import 'package:caliber_sense/custom_widgets/test_tile.dart';
+import 'package:caliber_sense/models/question.dart';
 import 'package:caliber_sense/widgets/quick_test.dart';
 import 'package:flutter/material.dart';
 
@@ -39,18 +40,30 @@ class HomeScreen extends StatelessWidget {
                 heading: 'Aptitude test',
                 iconName: 'mathematics',
                 subHeading: 'Take comprehensive aptitude test',
+                numberOfAptitudeQuestions: 10,
+                numberOfLanguageQuestions: 0,
+                numberOfMemoryQuestions: 0,
+                currQuestionCategory: QuestionCategory.aptitude,
               ),
               const SizedBox(height: 15),
               const TestTile(
                 heading: 'Memory test',
                 iconName: 'brain',
                 subHeading: 'Test your memory retaintion power',
+                numberOfAptitudeQuestions: 0,
+                numberOfLanguageQuestions: 0,
+                numberOfMemoryQuestions: 5,
+                currQuestionCategory: QuestionCategory.memory,
               ),
               const SizedBox(height: 15),
               const TestTile(
                 heading: 'Language test',
                 iconName: 'language',
                 subHeading: 'Take comprehensive aptitude test',
+                numberOfAptitudeQuestions: 0,
+                numberOfLanguageQuestions: 10,
+                numberOfMemoryQuestions: 0,
+                currQuestionCategory: QuestionCategory.language,
               ),
             ],
           ),

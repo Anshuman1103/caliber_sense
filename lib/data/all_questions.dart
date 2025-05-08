@@ -1,4 +1,6 @@
 /// The `AllQuestions` class provides a method to retrieve a list of questions based on the specified category.
+library;
+
 import 'package:caliber_sense/data/aptitude_question.dart';
 import 'package:caliber_sense/data/language_question.dart';
 import 'package:caliber_sense/data/memory_questions.dart';

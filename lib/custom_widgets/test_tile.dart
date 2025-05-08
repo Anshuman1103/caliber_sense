@@ -1,4 +1,5 @@
 import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/models/question.dart';
 import 'package:caliber_sense/screens/question_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,17 +9,34 @@ class TestTile extends StatelessWidget {
     required this.heading,
     required this.iconName,
     required this.subHeading,
+    required this.numberOfAptitudeQuestions,
+    required this.numberOfLanguageQuestions,
+    required this.numberOfMemoryQuestions,
+    required this.currQuestionCategory,
   });
 
   final String heading;
   final String subHeading;
   final String iconName;
+  final int numberOfAptitudeQuestions;
+  final int numberOfLanguageQuestions;
+  final int numberOfMemoryQuestions;
+  final QuestionCategory currQuestionCategory;
 
   @override
   Widget build(BuildContext context) {
     void questionScreen() {
-      // Navigator.of(context)
-      //     .push(MaterialPageRoute(builder: (ctx) => const QuestionScreen()));
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => QuestionScreen(
+            questionCategory: currQuestionCategory,
+            difficultyLevel: DifficultyLevel.easy,
+            aptitudeQuestions: numberOfAptitudeQuestions,
+            languageQuestions: numberOfLanguageQuestions,
+            memoryQuestions: numberOfMemoryQuestions,
+          ),
+        ),
+      );
     }
 
     return InkWell(

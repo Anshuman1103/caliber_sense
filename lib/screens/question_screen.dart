@@ -3,7 +3,8 @@ import 'package:caliber_sense/data/all_questions.dart';
 import 'package:caliber_sense/main.dart';
 import 'package:caliber_sense/custom_widgets/question_card.dart';
 import 'package:caliber_sense/models/question.dart';
-import 'package:caliber_sense/screens/result_screen.dart';
+import 'package:caliber_sense/provider/scores_provider.dart';
+import 'package:caliber_sense/screens/result_generater_splash.dart';
 import 'package:caliber_sense/utilities/score_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +17,7 @@ class QuestionScreen extends ConsumerStatefulWidget {
     required this.questionCategory,
     required this.difficultyLevel,
     required this.aptitudeQuestions,
-    required this.laguageQuestions,
+    required this.languageQuestions,
     required this.memoryQuestions,
   });
 
@@ -24,7 +25,7 @@ class QuestionScreen extends ConsumerStatefulWidget {
   final QuestionCategory questionCategory;
   final DifficultyLevel difficultyLevel;
   final int aptitudeQuestions;
-  final int laguageQuestions;
+  final int languageQuestions;
   final int memoryQuestions;
 
   @override
@@ -66,39 +67,75 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
 
   /// 🎯 Gets the next question based on current category and difficulty
   Question? _getNextQuestion() {
-    List<Question> pool;
-    int index;
+    while (true) {
+      List<Question> pool;
+      int index;
+      int totalQuestions;
 
-    switch (_questionCategory) {
-      case QuestionCategory.aptitude:
-        pool = _aptitudeQuestions
-            .where((q) => q.difficulty == _difficultyLevel)
-            .toList();
-        index = _aptitudeIndex;
-        break;
-      case QuestionCategory.language:
-        pool = _languageQuestions
-            .where((q) => q.difficulty == _difficultyLevel)
-            .toList();
-        index = _languageIndex;
-        break;
-      case QuestionCategory.memory:
-        pool = _memoryQuestions
-            .where((q) => q.difficulty == _difficultyLevel)
-            .toList();
-        index = _memoryIndex;
-        break;
+      switch (_questionCategory) {
+        case QuestionCategory.aptitude:
+          totalQuestions = widget.aptitudeQuestions;
+          if (totalQuestions == 0 || _aptitudeIndex >= totalQuestions) {
+            if (!_moveToNextCategory()) return null;
+            continue;
+          }
+          pool = _aptitudeQuestions
+              .where((q) => q.difficulty == _difficultyLevel)
+              .toList();
+          index = _aptitudeIndex;
+          break;
+        case QuestionCategory.language:
+          totalQuestions = widget.languageQuestions;
+          if (totalQuestions == 0 || _languageIndex >= totalQuestions) {
+            if (!_moveToNextCategory()) return null;
+            continue;
+          }
+          pool = _languageQuestions
+              .where((q) => q.difficulty == _difficultyLevel)
+              .toList();
+          index = _languageIndex;
+          break;
+        case QuestionCategory.memory:
+          totalQuestions = widget.memoryQuestions;
+          if (totalQuestions == 0 || _memoryIndex >= totalQuestions) {
+            if (!_moveToNextCategory()) return null;
+            continue;
+          }
+          pool = _memoryQuestions
+              .where((q) => q.difficulty == _difficultyLevel)
+              .toList();
+          index = _memoryIndex;
+          break;
+      }
+
+      return index < pool.length ? pool[index] : null;
     }
-
-    // If the current index has questions left in that difficulty
-    // print(pool.length);
-    return index < pool.length ? pool[index] : null;
   }
 
   /// ⏭ Moves to the next question and adjusts difficulty based on correctness
+  bool _moveToNextCategory() {
+    switch (_questionCategory) {
+      case QuestionCategory.aptitude:
+        _questionCategory = QuestionCategory.language;
+        _difficultyLevel = widget.difficultyLevel;
+        if (widget.languageQuestions > 0) return true;
+        return _moveToNextCategory(); // 🔁 Recursively move to memory
+      case QuestionCategory.language:
+        _questionCategory = QuestionCategory.memory;
+        _difficultyLevel = widget.difficultyLevel;
+        if (widget.memoryQuestions > 0) return true;
+        return _moveToNextCategory(); // 🔁 If 0, go to result
+      case QuestionCategory.memory:
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _showResult(); // ✅ Always called if this is reached
+        });
+        return false;
+    }
+  }
+
   void _nextQuestion(bool correct) {
     setState(() {
-      // 📈 Adjust difficulty
+      // Adjust difficulty
       if (correct) {
         if (_difficultyLevel == DifficultyLevel.easy) {
           _difficultyLevel = DifficultyLevel.medium;
@@ -113,32 +150,16 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
         }
       }
 
-      // 🔄 Move to next category/question
+      // Increment index for current category
       switch (_questionCategory) {
         case QuestionCategory.aptitude:
           _aptitudeIndex++;
-          if (_aptitudeIndex >= widget.aptitudeQuestions) {
-            _questionCategory = QuestionCategory.language;
-            _difficultyLevel = widget.difficultyLevel;
-          }
           break;
         case QuestionCategory.language:
           _languageIndex++;
-          if (_languageIndex >= widget.laguageQuestions) {
-            _questionCategory = QuestionCategory.memory;
-            _difficultyLevel = widget.difficultyLevel;
-          }
           break;
         case QuestionCategory.memory:
           _memoryIndex++;
-          if (_memoryIndex >= widget.memoryQuestions) {
-            // ✅ All questions completed, navigate to result screen
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const ResultScreen()),
-            );
-            return;
-          }
           break;
       }
 
@@ -146,24 +167,36 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
     });
   }
 
+  void _showResult() {
+    final scores = ref.read(scoresProvider);
+    print("Aptitude Score: ${scores.totalAptitudeScore}");
+    print("Language Score: ${scores.totalLanguageScore}");
+    print("Memory Score: ${scores.totalMemoryScore}");
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const ResultGeneraterSplash()),
+    );
+  }
+
   /// 🖱 Handles user selecting an option
   Future<void> _handleOptionSelected(int index) async {
     setState(() {
       _selectedOptionIndex = index;
     });
+  }
 
+  void _submit() {
     Question? currentQuestion = _getNextQuestion();
     if (currentQuestion == null) return;
 
     // ✅ Check correctness
-    bool correct = index == currentQuestion.correctAnswerIndex;
+    bool correct = _selectedOptionIndex == currentQuestion.correctAnswerIndex;
     int marks = correct ? currentQuestion.marks : 0;
 
     // 📝 Update score in provider
     updateScore(ref: ref, question: currentQuestion, gainedMarks: marks);
 
-    // ⏳ Delay before transitioning to next question
-    await Future.delayed(const Duration(milliseconds: 200));
+    //Jumping to next question
     _nextQuestion(correct);
   }
 
@@ -180,7 +213,7 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
         body: Center(child: CircularProgressIndicator()),
       );
     }
-    print(currentQuestion.correctAnswerIndex);
+    print("Correct answer index: ${currentQuestion.correctAnswerIndex}");
     // Display category and difficulty for the user
     String questionType = capitalize(_questionCategory.name);
     String questionLevel = capitalize(_difficultyLevel.name);
@@ -234,16 +267,7 @@ class _QuestionScreenState extends ConsumerState<QuestionScreen> {
                   bottom: 20,
                   right: 20,
                   child: FloatingActionButton(
-                    onPressed: () {
-                      _handleOptionSelected(-1); // -1 implies skip
-                      ScaffoldMessenger.of(context).clearSnackBars();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Question skipped'),
-                          duration: Duration(seconds: 1),
-                        ),
-                      );
-                    },
+                    onPressed: _submit,
                     child: const Icon(Icons.skip_next),
                   ),
                 ),

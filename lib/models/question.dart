@@ -5,6 +5,7 @@ class Question {
   int marks;
   QuestionCategory category;
   DifficultyLevel difficulty;
+  String? image;
 
   Question({
     required this.questionText,
@@ -13,6 +14,7 @@ class Question {
     required this.marks,
     required this.category,
     required this.difficulty,
+    this.image,
   });
 }
 

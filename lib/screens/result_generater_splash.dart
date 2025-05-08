@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:caliber_sense/main.dart';
+import 'package:caliber_sense/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResultGeneraterSplash extends StatefulWidget {
@@ -15,24 +16,32 @@ class _ResultGeneraterSplash extends State<ResultGeneraterSplash> {
   Timer? timer;
 
   @override
+  @override
   void initState() {
     super.initState();
-
     int secondsPassed = 0;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      if (!mounted) return;
+
       setState(() {
         secondsPassed++;
         progress = secondsPassed / 5;
 
         if (secondsPassed == 2) {
-          displayText = 'Generating score card';
+          displayText = 'Generating score card...';
         } else if (secondsPassed == 4) {
-          displayText = 'Displaying the results';
+          displayText = 'Displaying the results...';
         }
 
         if (secondsPassed >= 5) {
-          timer.cancel();
-          // Optionally navigate to another screen here
+          t.cancel();
+
+          // Navigate to result screen
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const ResultScreen()),
+          );
         }
       });
     });
@@ -55,17 +64,21 @@ class _ResultGeneraterSplash extends State<ResultGeneraterSplash> {
             // Progress bar
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
-              child: LinearProgressIndicator(
-                value: progress,
-                backgroundColor: colorScheme.onPrimary.withOpacity(0.2),
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(colorScheme.onPrimary),
-                minHeight: 10,
+                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20),
+              child: ClipRRect(
+                // Adjust the curve as needed
+                borderRadius: BorderRadius.circular(10),
+                child: LinearProgressIndicator(
+                  value: progress,
+                  backgroundColor: colorScheme.onPrimary,
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(colorScheme.onPrimary),
+                  minHeight: 10,
+                ),
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
             // Animated text
             AnimatedSwitcher(

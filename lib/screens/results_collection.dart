@@ -15,8 +15,12 @@ class ResultsCollection extends StatelessWidget {
               .copyWith(color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
-      body: const Center(
-        child: ResultListCard(),
+      body: Center(
+        child: Image.asset(
+          'assets/icons/coming-soon.png',
+          height: 200,
+          width: 200,
+        ),
       ),
     );
   }

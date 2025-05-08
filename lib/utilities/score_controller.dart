@@ -24,5 +24,5 @@ void updateScore({
           ref.read(scoresProvider).totalMemoryScore + question.marks);
       break;
   }
-  print(gainedMarks);
+  print("Marked added : $gainedMarks");
 }
