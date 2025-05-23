@@ -1,118 +1,130 @@
-💡 Caliber Sense
-Caliber Sense is a Flutter-based AI-powered mobile application designed to evaluate an individual's communication skills, aptitude, and personality. Using an intuitive quiz interface, Firebase for authentication and cloud data storage, and TensorFlow Lite for on-device AI evaluation, the app provides users with a personalized assessment of their capabilities.
+Here’s a professional and cleanly formatted `README.md` for your GitHub repository:
 
-🚀 Features
-🧠 Adaptive Testing
-Dynamically adjusts question difficulty based on user performance.
+---
 
-Categories: Aptitude, Language, Memory.
+# 🧠 Caliber Sense – Skill Evaluation App
 
-🗣️ Communication Skill Analysis
-Evaluates English fluency using AI models.
+**Caliber Sense** is an AI-powered mobile application developed with **Flutter** that evaluates a user's **communication skills**, **aptitude**, and **personality** traits. It uses a combination of custom logic, Firebase services, and machine learning (TensorFlow Lite) to deliver intelligent assessments and personalized reports.
 
-Text-based question-answer interface to assess grammar, structure, and coherence.
+---
 
-🧮 Aptitude Test
-Questions vary in type: logical reasoning, arithmetic, and problem-solving.
+## 🚀 Features
 
-Supports adaptive logic based on user responses.
+| Feature                          | Description                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------ |
+| 🧩 Adaptive Quiz System          | Dynamically adjusts question difficulty based on user's performance.           |
+| 📊 Detailed Results              | Breaks down results by skill categories (language, aptitude, memory, etc.)     |
+| 🖼️ Timed Image Memory Test      | Shows image for limited time before displaying related question.               |
+| 🔊 Voice Input Support (Planned) | Accepts spoken answers for language assessment (future roadmap).               |
+| ☁️ Firebase Integration          | Real-time data sync, authentication, and analytics.                            |
+| 🧠 ML Integration (TFLite)       | TensorFlow Lite model to evaluate personality traits via answers.              |
+| 🔐 Secure Authentication         | Google/Firebase Auth for secure and easy logins.                               |
+| 🪄 Adaptive Difficulty Engine    | Custom logic that personalizes questions in real-time.                         |
+| 📦 Modular Codebase              | Well-structured, scalable project with reusable widgets & separation of logic. |
 
-🧵 Personality Profiling
-Judges honesty, politeness, and assertiveness using TensorFlow Lite models.
+---
 
-Offers personality insights after test completion.
+## 🛠️ Tech Stack
 
-🔥 Firebase Integration
-Authentication: Secure user login/signup using Firebase Auth.
+| Technology                           | Purpose                               |
+| ------------------------------------ | ------------------------------------- |
+| **Flutter**                          | Frontend framework                    |
+| **Dart**                             | Programming language                  |
+| **Firebase**                         | Auth, Firestore DB, and Analytics     |
+| **TensorFlow Lite**                  | Personality evaluation using ML model |
+| **Provider / Riverpod** *(optional)* | State management                      |
+| **Google Fonts**                     | Enhanced UI typography                |
 
-Cloud Firestore: Stores question sets, user test results, and performance history.
+---
 
-Firebase Storage: Hosts image-based questions and user profile data.
+## 🔧 Firebase Integration
 
-📱 Responsive UI
-Built using Flutter and Dart with support for multiple screen sizes.
+* **Authentication**: Google Sign-In / Email Auth
+* **Cloud Firestore**: Stores user data, question sets, and test results
+* **Firebase Analytics**: Tracks user activity for insights
+* **Cloud Storage** *(optional)*: For storing question images or media
 
-Custom-designed widgets (e.g., QuestionCard, Option, etc.)
+---
 
-🧠 TensorFlow Lite Integration
-On-device AI models for personality analysis.
+## 🧠 ML Integration (TensorFlow Lite)
 
-Optimized .tflite models for fast and private inference.
+* Integrated a **TFLite model** into the app for offline personality evaluation.
+* Analyzes answer patterns and keywords to infer traits like:
 
-🛠️ Technologies Used
-Tech	Purpose
-Flutter	Cross-platform mobile development
-Dart	Programming language for app logic
-Firebase Auth	User authentication
-Cloud Firestore	Realtime database
-Firebase Storage	Image and asset hosting
-TensorFlow Lite	On-device machine learning
-Google Fonts	UI Typography
-Provider / Riverpod (if used)	State management
+  * Politeness
+  * Confidence
+  * Honesty
+  * Emotional tone
 
-📂 Folder Structure (Simplified)
-vbnet
-Copy
-Edit
-lib/
-├── main.dart
-├── models/
-│   └── question.dart
-├── screens/
-│   ├── home_screen.dart
-│   ├── profile_screen.dart
-│   ├── results_collection.dart
-│   ├── test_screens/
-│   │   └── memory_test.dart
-├── widgets/
-│   ├── question_card.dart
-│   ├── option.dart
-├── data/
-│   ├── aptitude_questions.dart
-│   ├── memory_questions.dart
-├── services/
-│   ├── firebase_service.dart
-│   ├── ai_model_handler.dart
-assets/
-└── icons/
-    └── coming-soon.png
-📸 Screenshots
-<!-- Add screenshots here -->
-To be added
+---
 
-🧪 Getting Started
-Prerequisites:
-Flutter SDK (latest stable)
+## 📂 Folder Structure
 
-Dart SDK
+```bash
+caliber_sense/
+│
+├── lib/
+│   ├── screens/               # Home, Profile, Results, etc.
+│   ├── widgets/               # Reusable UI components
+│   ├── models/                # Data models (Question, User, etc.)
+│   ├── services/              # Firebase, ML, API integration
+│   ├── utils/                 # Constants, helpers
+│   └── main.dart              # App entry point
+│
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   └── tflite/                # ML model files
+│
+├── pubspec.yaml
+└── README.md
+```
 
-Firebase CLI (for setup and deployment)
+---
 
-Setup Instructions:
-Clone the repo
+## 📸 Screenshots
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/caliber_sense.git
-cd caliber_sense
-Install dependencies
+> Add screenshots or a demo GIF here (UI of tests, result report, etc.)
 
-bash
-Copy
-Edit
-flutter pub get
-Configure Firebase
+---
 
-Create a Firebase project.
+## 🚧 Roadmap
 
-Add Android/iOS apps and download google-services.json / GoogleService-Info.plist.
+* [x] Adaptive test engine
+* [x] Firebase integration
+* [x] TFLite model for personality
+* [ ] Voice input for language tests
+* [ ] Admin dashboard for question upload
+* [ ] Exportable PDF reports
+* [ ] Multilingual support
 
-Replace them in android/app/ or ios/Runner/.
+---
 
-Run the app
+## 🧑‍💻 Setup Instructions
 
-bash
-Copy
-Edit
-flutter run
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/caliber_sense.git
+   cd caliber_sense
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   flutter pub get
+   ```
+
+3. **Firebase setup**
+
+   * Download `google-services.json` (for Android) and place it in `android/app/`.
+   * Download `GoogleService-Info.plist` (for iOS) and place it in `ios/Runner/`.
+
+4. **Run the app**
+
+   ```bash
+   flutter run
+   ```
+
+---
+
