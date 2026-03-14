@@ -78,7 +78,6 @@ caliber_sense/
 
 * [x] Adaptive test engine
 * [x] Firebase integration
-* [x] TFLite model for personality
 * [ ] Voice input for language tests
 * [ ] Admin dashboard for question upload
 * [ ] Exportable PDF reports
