@@ -4,7 +4,7 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 
 # 🧠 Caliber Sense – Skill Evaluation App
 
-**Caliber Sense** is an AI-powered mobile application developed with **Flutter** that evaluates a user's **communication skills**, **aptitude**, and **personality** traits. It uses a combination of custom logic, Firebase services, and machine learning (TensorFlow Lite) to deliver intelligent assessments and personalized reports.
+**Caliber Sense** is an mobile application developed with **Flutter** that evaluates a user's **communication skills**, **aptitude**, and **personality** traits. It uses a combination of custom logic, Firebase services, and dynamic questions to deliver intelligent assessments and personalized reports.
 
 ---
 
@@ -17,7 +17,6 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 | 🖼️ Timed Image Memory Test      | Shows image for limited time before displaying related question.               |
 | 🔊 Voice Input Support (Planned) | Accepts spoken answers for language assessment (future roadmap).               |
 | ☁️ Firebase Integration          | Real-time data sync, authentication, and analytics.                            |
-| 🧠 ML Integration (TFLite)       | TensorFlow Lite model to evaluate personality traits via answers.              |
 | 🔐 Secure Authentication         | Google/Firebase Auth for secure and easy logins.                               |
 | 🪄 Adaptive Difficulty Engine    | Custom logic that personalizes questions in real-time.                         |
 | 📦 Modular Codebase              | Well-structured, scalable project with reusable widgets & separation of logic. |
@@ -31,7 +30,6 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 | **Flutter**                          | Frontend framework                    |
 | **Dart**                             | Programming language                  |
 | **Firebase**                         | Auth, Firestore DB, and Analytics     |
-| **TensorFlow Lite**                  | Personality evaluation using ML model |
 | **Provider / Riverpod** *(optional)* | State management                      |
 | **Google Fonts**                     | Enhanced UI typography                |
 
@@ -43,18 +41,6 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 * **Cloud Firestore**: Stores user data, question sets, and test results
 * **Firebase Analytics**: Tracks user activity for insights
 * **Cloud Storage** *(optional)*: For storing question images or media
-
----
-
-## 🧠 ML Integration (TensorFlow Lite)
-
-* Integrated a **TFLite model** into the app for offline personality evaluation.
-* Analyzes answer patterns and keywords to infer traits like:
-
-  * Politeness
-  * Confidence
-  * Honesty
-  * Emotional tone
 
 ---
 
