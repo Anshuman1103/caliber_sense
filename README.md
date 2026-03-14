@@ -30,7 +30,7 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 | **Flutter**                          | Frontend framework                    |
 | **Dart**                             | Programming language                  |
 | **Firebase**                         | Auth, Firestore DB, and Analytics     |
-| **Provider / Riverpod** *(optional)* | State management                      |
+| **Provider / Riverpod**              | State management                      |
 | **Google Fonts**                     | Enhanced UI typography                |
 
 ---
@@ -40,7 +40,7 @@ Here’s a professional and cleanly formatted `README.md` for your GitHub reposi
 * **Authentication**: Google Sign-In / Email Auth
 * **Cloud Firestore**: Stores user data, question sets, and test results
 * **Firebase Analytics**: Tracks user activity for insights
-* **Cloud Storage** *(optional)*: For storing question images or media
+* **Cloud Storage** : For storing question images or media
 
 ---
 
